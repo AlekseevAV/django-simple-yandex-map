@@ -33,3 +33,9 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+.idea
+.vscode
+*.log
+*.pyc
+**/__pycache__/

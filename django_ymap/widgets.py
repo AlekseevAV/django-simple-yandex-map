@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.forms.widgets import TextInput
 
 
@@ -12,4 +13,7 @@ class YmapCoordFieldWidget(TextInput):
         super(YmapCoordFieldWidget, self).__init__(default)
 
     class Media:
-        js = ('//api-maps.yandex.ru/2.1/?lang=ru-RU', 'django_ymap/init.js')
+        js = (
+            '//api-maps.yandex.ru/2.1/?lang=ru-RU&apikey={}'.format(settings.YANDEX_API_KEY),
+            'django_ymap/init.js'
+        )
