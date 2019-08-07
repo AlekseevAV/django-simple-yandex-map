@@ -7,7 +7,7 @@ class YmapCoordFieldWidget(TextInput):
 
     def __init__(self, attrs=None):
 
-        default = {'class': 'ymap_field', 'width': '20em'}
+        default = {'class': 'ymap_field', 'style': 'width: 30em;'}
         if attrs:
             default.update(attrs)
         super(YmapCoordFieldWidget, self).__init__(default)

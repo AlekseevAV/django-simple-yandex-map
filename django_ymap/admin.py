@@ -1,8 +1,9 @@
+from .fields import YmapCoord
+from .widgets import YmapCoordFieldWidget
+
+
 class YmapAdmin(object):
     def formfield_for_dbfield(self, db_field, **kwargs):
-        from .fields import YmapCoord
-        from .widgets import YmapCoordFieldWidget
-
         if isinstance(db_field, YmapCoord):
             kwargs['widget'] = YmapCoordFieldWidget
 
