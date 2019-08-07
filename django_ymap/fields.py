@@ -50,8 +50,11 @@ class YmapCoord(models.CharField):
 
         # широта и долгота
         Address = namedtuple('Address', ['latitude', 'longitude'])
-        latitude, longitude = list(map(lambda v: float(v), value.split(',')))
-        address = Address(latitude=latitude, longitude=longitude)
+        try:
+            latitude, longitude = list(map(lambda v: float(v), value.split(',')))
+            address = Address(latitude=latitude, longitude=longitude)
+        except Exception:
+            address = Address(latitude=0, longitude=0)
 
         return address
 
