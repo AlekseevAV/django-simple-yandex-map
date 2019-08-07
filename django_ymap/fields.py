@@ -1,4 +1,6 @@
 #* coding: utf-8
+from collections import namedtuple
+
 from django.db import models
 
 
@@ -33,7 +35,6 @@ class YmapCoord(models.CharField):
         except ImportError:
             pass
 
-
     def deconstruct(self):
         name, path, args, kwargs = super(YmapCoord, self).deconstruct()
         if "start_query" in kwargs:
@@ -43,6 +44,16 @@ class YmapCoord(models.CharField):
         if 'size_height' in kwargs:
             del kwargs["size_height"]
         return name, path, args, kwargs
+
+    def to_python(self, value):
+        value = super().to_python(value)  # this string
+
+        # широта и долгота
+        Address = namedtuple('Address', ['latitude', 'longitude'])
+        latitude, longitude = list(map(lambda v: float(v), value.split(',')))
+        address = Address(latitude=latitude, longitude=longitude)
+
+        return address
 
 try:
     from south.modelsinspector import add_introspection_rules
