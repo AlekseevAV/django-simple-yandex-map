@@ -53,5 +53,4 @@ admin.site.register(Record, RecordAdmin)
 ```
 Где ```Record``` ваша модель.
 
-===
 Возможно, для корректой работы вам потребуется выполнить ```collectstatic```.
