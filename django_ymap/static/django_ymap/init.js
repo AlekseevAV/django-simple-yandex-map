@@ -54,14 +54,12 @@ function init_map(input) {
 }
 
 function django_ymap_set_center_by_coords(coords, map) {
-
     map.zoomRange.get(coords).then(function (range) {
         map.setCenter(coords, range[13])
     })
 }
 
 function django_ymap_change_mark(input, coords, title) {
-    console.log(coords);
     var mark = input.data('ymap_mark');
     var map = input.data('ymap');
     if (mark) map.geoObjects.remove(mark);

@@ -3,9 +3,8 @@ django-simple-yandex-map
 
 Простая интеграция Яндекс карт в панель администратора django
 
-![alt=""](http://ubuntuone.com/4UYu7wU8lZhE5Z0P7FdEO3)
 ### Установка
-===
+
 Скопировать папку django_ymap в корневую директорию вашего django проекта.
 Добавить ```django_ymap``` в ```INSTALLED_APPS``` (файл ```settings.py```)
 
@@ -18,9 +17,10 @@ INSTALLED_APPS = (
 
 ```
 
-===
+Так же добавьте `YANDEX_API_KEY` API ключ от яндекс сервиса в ваши настройки `settings.py`
 
 ### Использование
+
 Добавьте в вашу модель поле ```django_ymap.fields.YmapCoord```
 
 ```
@@ -53,5 +53,4 @@ admin.site.register(Record, RecordAdmin)
 ```
 Где ```Record``` ваша модель.
 
-===
 Возможно, для корректой работы вам потребуется выполнить ```collectstatic```.

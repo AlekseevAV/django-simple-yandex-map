@@ -12,4 +12,3 @@ class SimpleYandexMap(AppConfig):
             from random import randint
             from django_ymap.fields import YmapCoord
             add(YmapCoord,lambda: '{},{}'.format(randint(-50,50),randint(-50,50)))
-
