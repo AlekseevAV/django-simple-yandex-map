@@ -1,20 +1,22 @@
-(function ($) {
-    $(function () {
+window.addEventListener("load", function() {
+    (function ($) {
+        $(function () {
 
-        var i = 0;
-        $('.ymap_field').each(function () {
-            var input = $(this);
+            var i = 0;
+            $('.ymap_field').each(function () {
+                var input = $(this);
 
-            var ymap_div = $('<div style="float:left"></div>').attr('id', 'ymap_' + i);
-            input.data('ymap_div', ymap_div);
+                var ymap_div = $('<div style="float:left"></div>').attr('id', 'ymap_' + i);
+                input.data('ymap_div', ymap_div);
 
-            q = ymap_div.insertAfter(input);
-            q.css({'width': parseInt(input.attr('data-size_width')), 'height': parseInt(input.attr('data-size_height'))});
-            init_map(input);
-            i++;
+                q = ymap_div.insertAfter(input);
+                q.css({'width': parseInt(input.attr('data-size_width')), 'height': parseInt(input.attr('data-size_height'))});
+                init_map(input);
+                i++;
+            })
         })
-    })
-})(django.jQuery);
+    })(django.jQuery);
+});
 
 function init_map(input) {
     ymaps.ready(function () {
