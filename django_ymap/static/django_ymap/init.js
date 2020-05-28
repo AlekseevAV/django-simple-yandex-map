@@ -29,7 +29,8 @@ function init_map(input) {
 
         var searchControl = new ymaps.control.SearchControl({
             options: {
-                noPlacemark: true
+                noPlacemark: true,
+                provider: 'yandex#search'
             }
         });
 
@@ -38,7 +39,14 @@ function init_map(input) {
         map.events.add('click', function (e) {
             var coords = e.get('coords');
             django_ymap_change_mark(input, coords)
+        });
 
+        searchControl.events.add('resultselect', (e) => {
+            var selectedObjectIndex = e.get('index');
+            searchControl.getResult(selectedObjectIndex).then(organization => {
+                let coords = organization.geometry.getCoordinates();
+                django_ymap_change_mark(input, coords);
+            })
         });
 
         input.data("ymap", map);
